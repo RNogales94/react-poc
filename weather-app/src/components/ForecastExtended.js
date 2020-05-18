@@ -48,8 +48,8 @@ class ForecastExtended extends Component {
 
     componentWillReceiveProps(nextProps){
         if (nextProps.city !== this.props.city){
-            this.setState({ forecastData: null })
-            this.updateCity(this.props.city)
+            this.setState({ forecastData: null }) // Para tener el spinner mientras llega la nueva info
+            this.updateCity(nextProps.city)
         }
     }
     
