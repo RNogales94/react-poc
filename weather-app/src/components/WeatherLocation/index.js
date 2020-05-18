@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import Location from './Location';
 import WeatherData from './WeatherData';
 import transformWeather from './../../services/transformWeather'
-import getUrlWeatherByCity from './../../services/getUrlWeatherByCity'
+import { getUrlWeatherByCity } from '../../services/openWeatherAPI'
 
 
 import './styles.css'
@@ -55,10 +55,10 @@ class WeatherLocation extends Component {
     
 
     render(){
-        //console.log("render")
+        const { onWeatherLocationClick } = this.props
         const { city, data } = this.state
         return (
-            <div className="weatherLocationCont">
+            <div className="weatherLocationCont" onClick={onWeatherLocationClick} >
                 <Location city={city}/> 
                 {data ? 
                     <WeatherData data={data}/> : 
@@ -71,6 +71,7 @@ class WeatherLocation extends Component {
 
 WeatherLocation.propTypes = {
     city: PropTypes.string.isRequired,
+    onWeatherLocationClick: PropTypes.func.isRequired,
 
 }
     
